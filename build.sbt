@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "2.13.8"
+ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / organization := "com.example"
 
 val fs2Version = "3.2.7"
@@ -10,8 +10,10 @@ lazy val root = (project in file("."))
   )
 
 addCompilerPlugin(
-  "org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full
+  "org.typelevel" % "kind-projector" % "0.13.3" cross CrossVersion.full
 )
+addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")
+
 
 libraryDependencies += "co.fs2" %% "fs2-core" % fs2Version
 libraryDependencies += "co.fs2" %% "fs2-io" % fs2Version
