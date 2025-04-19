@@ -2,5 +2,6 @@
 .vscode
 .idea
 target/
+project/project
 .bsp
 .bloop
