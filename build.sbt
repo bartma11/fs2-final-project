@@ -1,7 +1,7 @@
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / organization := "com.example"
 
-val fs2Version = "3.2.7"
+val fs2Version = "3.12.0"
 val munitVersion = "0.7.29"
 
 lazy val root = (project in file("."))
