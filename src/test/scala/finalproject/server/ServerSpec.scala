@@ -28,7 +28,7 @@ class ServerSpec
       getWithNoBodyRequest,
       postWithBodyRequest
     )
-    val fakeRequestHandler = failOnPostRequestHandler[IO]
+    val fakeRequestHandler = echoRequestHandler[IO]
     val fakePipes: Pipes[IO] = multipleRequests(fakeRequests)
     val server = Server.make[IO](
       maxConnections = 10,

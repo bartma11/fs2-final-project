@@ -1,6 +1,7 @@
 package finalproject
 
 import cats.effect.{IO, IOApp}
+import cats.syntax.all._
 import finalproject.server.{Request, Response, Server}
 
 /** Test application that starts a server at port 29000 of localhost with a simple
@@ -20,8 +21,14 @@ object Main extends IOApp.Simple {
       * - The same body as the request
       * - A header 'Content-Length' with the number of bytes in the body.
       */
-    val echoRequestHandler: Request => IO[Response] =
-      ???
+    val echoRequestHandler: Request => IO[Response] = { request => 
+        Response(
+          request.httpVersion, 
+          Response.Ok, 
+          request.body, 
+          Map("Content-Length" -> request.body.length.show)
+        ).pure[IO]
+      }
 
     val server = Server[IO](maxConnections, host, port, echoRequestHandler)
 
