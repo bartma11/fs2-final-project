@@ -4,9 +4,8 @@ import cats._
 import cats.implicits._
 import scala.util.Try
 
-/**
- * An http request.
- */
+/** An http request.
+  */
 case class Request(
     method: String,
     url: String,
@@ -14,13 +13,13 @@ case class Request(
     headers: Map[String, String],
     body: Array[Byte]
 ) {
-  /**
-   * TODO #1
-   *
-   * Utility method for getting the content length of the request from the headers.
-   *
-   * If the header is not present or any error occurs, it returns 0.
-   */
+
+  /** TODO #1
+    *
+    * Utility method for getting the content length of the request from the headers.
+    *
+    * If the header is not present or any error occurs, it returns 0.
+    */
   def contentLength: Int =
     headers
       .find { case (header, _) => header.equalsIgnoreCase("Content-Length") }

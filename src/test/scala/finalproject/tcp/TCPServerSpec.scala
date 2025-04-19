@@ -11,12 +11,13 @@ class TCPServerSpec extends munit.FunSuite with FakeSocketChannel with FakeServe
 
   test("TCPServer emits accepted connections") {
     val socketChannels: List[SocketChannel] = List(
-      new DummySocketChannel, new DummySocketChannel, new DummySocketChannel
+      new DummySocketChannel,
+      new DummySocketChannel,
+      new DummySocketChannel
     )
     val serverSocketChannel = fromSocketChannels(socketChannels)
     val tcpServer = TCPServer.unsafeCreate[IO](serverSocketChannel)
-    val result = tcpServer
-      .stream
+    val result = tcpServer.stream
       .take(socketChannels.length)
       .compile
       .toList
