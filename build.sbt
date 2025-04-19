@@ -2,7 +2,7 @@ ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / organization := "com.example"
 
 val fs2Version = "3.12.0"
-val munitVersion = "0.7.29"
+val munitVersion = "1.1.0"
 
 lazy val root = (project in file("."))
   .settings(
